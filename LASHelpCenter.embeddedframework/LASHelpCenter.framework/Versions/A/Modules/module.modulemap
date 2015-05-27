@@ -1,0 +1,6 @@
+framework module LASHelpCenter {
+  umbrella header "LASHelpCenter.h"
+
+  export *
+  module * { export * }
+}
