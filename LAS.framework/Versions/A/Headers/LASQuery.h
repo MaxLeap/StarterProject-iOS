@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LASGeoPoint.h"
+
+@class LASGeoPoint;
 
 /*!
  A class that defines a query that is used to query for LASObjects.

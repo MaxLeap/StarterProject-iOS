@@ -13,6 +13,7 @@
 		9D2EC90E1A1C886D00DC1988 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2EC90D1A1C886D00DC1988 /* CoreTelephony.framework */; };
 		9D2EC9101A1C888200DC1988 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2EC90F1A1C888200DC1988 /* SystemConfiguration.framework */; };
 		9D2EC9121A1C890E00DC1988 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2EC9111A1C890E00DC1988 /* MobileCoreServices.framework */; };
+		9D608DA21B41310500888180 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D608DA11B41310500888180 /* libz.dylib */; };
 		9D889DD11A1C763E0016A732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D889DD01A1C763E0016A732 /* main.m */; };
 		9D889DD41A1C763E0016A732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D889DD31A1C763E0016A732 /* AppDelegate.m */; };
 		9D889DD71A1C763E0016A732 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D889DD61A1C763E0016A732 /* ViewController.m */; };
@@ -28,6 +29,7 @@
 		9D2EC90D1A1C886D00DC1988 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		9D2EC90F1A1C888200DC1988 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D2EC9111A1C890E00DC1988 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9D608DA11B41310500888180 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9D889DCB1A1C763E0016A732 /* LASStarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LASStarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D889DCF1A1C763E0016A732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D889DD01A1C763E0016A732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D608DA21B41310500888180 /* libz.dylib in Frameworks */,
 				9D209B9B1ADE3C7B00A4AE3F /* LAS.framework in Frameworks */,
 				9D2EC9121A1C890E00DC1988 /* MobileCoreServices.framework in Frameworks */,
 				9D2EC9101A1C888200DC1988 /* SystemConfiguration.framework in Frameworks */,
@@ -101,6 +104,7 @@
 		9D889DF81A1C79370016A732 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D608DA11B41310500888180 /* libz.dylib */,
 				9D209B991ADE3C7B00A4AE3F /* LAS.framework */,
 				9D209B9A1ADE3C7B00A4AE3F /* LASFacebookUtils.framework */,
 				9D2EC9111A1C890E00DC1988 /* MobileCoreServices.framework */,
@@ -121,6 +125,7 @@
 				9D889DC71A1C763E0016A732 /* Sources */,
 				9D889DC81A1C763E0016A732 /* Frameworks */,
 				9D889DC91A1C763E0016A732 /* Resources */,
+				9D608DA31B41319A00888180 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -176,6 +181,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D608DA31B41319A00888180 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh ${PROJECT_DIR}/tools/bump_build_number.sh \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9D889DC71A1C763E0016A732 /* Sources */ = {

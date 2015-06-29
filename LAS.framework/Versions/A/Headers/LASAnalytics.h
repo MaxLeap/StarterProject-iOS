@@ -22,6 +22,12 @@
  */
 + (void)trackEvent:(NSString *)name;
 
+/**
+ *  Tracks the occurrence of a custom event. LAS will store a data point at the time of invocation with the given event name.
+ *
+ *  @param name  The name of the custom event to report to LAS as having happened.
+ *  @param count The number of this event occurred.
+ */
 + (void)trackEvent:(NSString *)name count:(int)count;
 
 /**
@@ -43,6 +49,24 @@
  */
 + (void)trackEvent:(NSString *)name dimensions:(NSDictionary *)dimensions;
 
+/**
+ *  Tracks the occurrence of a custom event with additional dimensions and the count it occurred. LAS will store a data point at the time of invocation with the given event name.<br>
+ *
+ *  Dimensions will allow segmentation of the occurrences of this custom event. Keys and values should be NSStrings, and will throw otherwise.<br>
+ *
+ *  To track a user signup along with additional metadata, consider the following:<br>
+ *
+ *  @code
+ *  NSDictionary *dimensions = @{@"gender": @"m",
+ *                               @"source": @"web",
+ *                               @"dayType": @"weekend" };
+ *  [LASAnalytics trackEvent:@"signup" dimensions:dimensions count:1];
+ *  @endcode
+ *
+ *  @param name       The name of the custom event to report to LAS as having happened.
+ *  @param dimensions The dictionary of information by which to segment this event.
+ *  @param count      The number of this event occurred.
+ */
 + (void)trackEvent:(NSString *)name dimensions:(NSDictionary *)dimensions count:(int)count;
 
 /*!
@@ -57,9 +81,24 @@
  */
 + (void)setSessionContinueSeconds:(int)seconds;
 
+/** @name Page View Analytics */
 
+/**
+ *  Tracks the duration of view displayed.
+ *
+ *  Tracks the beginning of view display.
+ *
+ *  @param pageName The name of the page.
+ */
 + (void)beginLogPageView:(NSString *)pageName;
 
+/**
+ *  Tracks the duration of view displayed.
+ *
+ *  Tracks the ending of view display.
+ *
+ *  @param pageName The name of the page.
+ */
 + (void)endLogPageView:(NSString *)pageName;
 
 @end

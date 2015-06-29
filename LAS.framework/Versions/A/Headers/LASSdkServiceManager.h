@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <LAS/LASSdkService.h>
+#import <UIKit/UIKit.h>
+
+@protocol LASSdkService;
 
 @interface LASSdkServiceManager : NSObject
 

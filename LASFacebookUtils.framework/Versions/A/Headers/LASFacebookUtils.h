@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <LAS/LASUser.h>
-
+#import <LAS/LAS.h>
 
 /*!
  Provides utility functions for working with Facebook in a LAS application.<br>

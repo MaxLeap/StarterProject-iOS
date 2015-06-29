@@ -7,7 +7,6 @@
 //
 
 #import "LASConstants.h"
-#import "LASQuery.h"
 
 /*!
  The helper class for LASObject. This class provides CRUD APIs for LASObject. You can use the methods bellow to create, update, delete and find objects on the LAS server.
@@ -53,7 +52,7 @@
 /*! @name Delete Many Objects from LAS */
 
 /*!
- Deletes a collection of objects all at once asynchronously and the block when done.
+ Deletes a collection of objects all at once asynchronously and excutes the block when done.
  
  @param objects The array of objects to delete.
  @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)

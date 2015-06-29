@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 iLegendsoft. All rights reserved.
 //
 
-#import "LASFile.h"
+#import "LASConstants.h"
+
+@class LASFile;
+
 /*!
  The `LASFileManager` class contains static functions that lets you create file on las servers and fetch file contents from las servers.
  */

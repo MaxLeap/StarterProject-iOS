@@ -10,18 +10,28 @@
 
 @interface LASCloudParam : NSObject
 
-+ (NSString *)getValueWithName:(NSString *)paramName defaultValue:(NSString *)defaultValue;
-+ (NSInteger)getIntValueWithName:(NSString *)paramName defaultValue:(NSInteger)defaultValue;
-+ (BOOL)getBooleanValueWithName:(NSString *)paramName defaultValue:(BOOL)defaultValue;
+/**
+ *  Enable to auto-refresh cloud parameter.
+ */
++ (void)enable __deprecated_msg("please use LASConfig instead");
+
+/**
+ *  Refresh cloud parameter cache. Cloud paramete cache cannot auto-refresh, you can call this method to refresh them.
+ */
++ (void)refresh __deprecated_msg("please use LASConfig instead");
+
++ (NSString *)getValueWithName:(NSString *)paramName defaultValue:(NSString *)defaultValue __deprecated_msg("please use LASConfig instead");
++ (NSInteger)getIntValueWithName:(NSString *)paramName defaultValue:(NSInteger)defaultValue __deprecated_msg("please use LASConfig instead");
++ (BOOL)getBooleanValueWithName:(NSString *)paramName defaultValue:(BOOL)defaultValue __deprecated_msg("please use LASConfig instead");
 
 /*
- * 用该方法设置observer后，每次CloudyParameter loading结束都会在主线程调用handler
+ * The handler will be excuted every time after cloud parameter was refreshed.
  */
-+ (void)addObserverWithIdentifier:(id)identifier handler:(void(^)(void))handler;
++ (void)addObserverWithIdentifier:(id)identifier handler:(void(^)(void))handler __deprecated_msg("please use LASConfig instead");
 
 /*
- * 用该方法清除CloudyParameter的observer
+ * Remove the handler added with the identifier.
  */
-+ (void)removeObserverWithIdentifier:(id)identifier;
++ (void)removeObserverWithIdentifier:(id)identifier __deprecated_msg("please use LASConfig instead");
 
 @end

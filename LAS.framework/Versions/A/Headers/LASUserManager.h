@@ -57,6 +57,17 @@
  */
 + (void)logOut;
 
+/** @name change password  */
+
+/**
+ *  Verify the current password and then change password with the new password.
+ *
+ *  @param newPassword a new password
+ *  @param oldPassword the current password
+ *  @param block       The block to execute. The block should have the following argument signature: (BOOL success, NSError *error)
+ */
++ (void)changePasswordWithNewPassword:(NSString *)newPassword oldPassword:(NSString *)oldPassword block:(LASBooleanResultBlock)block;
+
 /** @name Requesting a Password Reset */
 
 /*!
@@ -78,6 +89,24 @@
  */
 + (void)requestEmailVerifyForEmailInBackground:(NSString *)email
                                          block:(LASBooleanResultBlock)block;
+
+/**
+ *  Check if the password matches current user.
+ *
+ *  @param password a password
+ *  @param block    The block to execute. The block should have the following argument signature: (BOOL isMatch, NSError *error)
+ */
++ (void)checkPassword:(NSString *)password block:(LASBooleanResultBlock)block;
+
+/**
+ *  Check the username is exist or not.
+ *
+ *  @discussion Empty username is not exist becuause it's not valid.
+ *
+ *  @param username The username to check
+ *  @param block    The block to execute. The block should have the following argument signature: (BOOL isExist, NSError *error)
+ */
++ (void)checkUsernameExists:(NSString *)username block:(LASBooleanResultBlock)block;
 
 #pragma mark Getting Users
 

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class LASGeoPoint, LASFile;
+
 /*!
  `LASConfig` is a representation of the remote configuration object.
  It enables you to add things like feature gating, a/b testing or simple "Message of the day".

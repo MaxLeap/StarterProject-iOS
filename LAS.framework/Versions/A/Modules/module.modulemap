@@ -4,38 +4,3 @@ framework module LAS {
     export *
     module * { export * }
 }
-
-module LAS.INTULocationRequestDefines {
-    header "INTULocationRequestDefines.h"
-    export *
-}
-
-module LAS.LAS_INTULocationManager {
-    header "LAS_INTULocationManager.h"
-    export *
-}
-
-module LAS.LAS_SSKeychain {
-    header "LAS_SSKeychain.h"
-    export *
-}
-
-module LAS.LAS_SSKeychainQuery {
-    header "LAS_SSKeychainQuery.h"
-    export *
-}
-
-module LAS.LASObjectPersistanceUtils {
-    header "LASObjectPersistanceUtils.h"
-    export *
-}
-
-module LAS.LASSQLiteManager {
-    header "LASSQLiteManager.h"
-    export *
-}
-
-module LAS.LASReceiptManager {
-    header "LASReceiptManager.h"
-    export *
-}

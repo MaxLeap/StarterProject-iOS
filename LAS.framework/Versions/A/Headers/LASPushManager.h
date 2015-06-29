@@ -6,9 +6,11 @@
 //  Copyright (c) 2014年 iLegendsoft. All rights reserved.
 //
 
-#import "LASPush.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <LAS/LASConstants.h>
 
-@class UIUserNotificationSettings;
+@class LASPush, LASQuery;
 
 /*!
  */
@@ -78,9 +80,9 @@ NS_EXTENSION_UNAVAILABLE("")
  @abstract A default handler for push notifications while the app is active that
  could be used to mimic the behavior of iOS push notifications while the app is backgrounded or not running.
  
- @discussion Call this from `application:didReceiveRemoteNotification:`.
+ @discussion Call this from `application:didFinishLaunchingWithOptions:` and `application:didReceiveRemoteNotification:`.
  
- @param userInfo The userInfo dictionary you get in `appplication:didReceiveRemoteNotification:`.
+ @param userInfo The dictionary from either `didFinishLaunchingWithOptions:` or `appplication:didReceiveRemoteNotification:`.
  */
 + (void)handlePush:(NSDictionary *)userInfo;
 

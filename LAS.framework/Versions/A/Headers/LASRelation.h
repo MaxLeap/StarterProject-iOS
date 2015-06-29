@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 iLegendsoft. All rights reserved.
 //
 
-#import "LASObject.h"
-#import "LASQuery.h"
+#import <Foundation/Foundation.h>
+
+@class LASQuery, LASObject;
 
 /*!
  A class that is used to access all of the children of a many-to-many relationship. Each instance of LASRelation is associated with a particular parent object and key.

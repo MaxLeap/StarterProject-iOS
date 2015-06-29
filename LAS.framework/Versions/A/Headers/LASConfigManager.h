@@ -40,7 +40,7 @@ typedef void (^LASConfigValueChangedBlock)(id newValue, id oldValue);
 + (void)getConfigInBackgroundWithBlock:(LASConfigResultBlock)block;
 
 /**
- *  Gets the `LASConfig` *asynchronously* for the given keys and executes the given callback block.
+ *  Gets the `LASConfig` *asynchronously* for the given keys from LAS servers and executes the given callback block.
  *
  *  @param keys  The keys to get, pass `nil` to get all key-values.
  *  @param block The block to execute. It should have the following argument signature: `^(LASConfig *config, NSError *error)`.

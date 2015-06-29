@@ -6,15 +6,14 @@
 //  Copyright (c) 2014 iLegendsoft. All rights reserved.
 //
 
+#import "LASConstants.h"
+@class LASUser, LAS_Twitter;
+
 /*!
  Provides utility functions for working with Twitter in a LAS application.
  
  This class is currently for iOS only.
  */
-#import <Foundation/Foundation.h>
-#import <LAS/LASUser.h>
-#import <LAS/LAS_Twitter.h>
-
 @interface LASTwitterUtils : NSObject
 
 

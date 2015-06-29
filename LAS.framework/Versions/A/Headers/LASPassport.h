@@ -7,8 +7,9 @@
 //
 
 #import "LASObject.h"
-#import "LASUser.h"
 #import "LASSubclassing.h"
+
+@class LASUser;
 
 /*!
  A LAS Framework Passport Object that is a local representation of a passport persisted to the LAS. This class is a subclass of a LASObject, and retains the same functionality of a LASObject, but also extends it with various passport specific methods, like authentication, signing up, and validation uniqueness.<br>

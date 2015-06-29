@@ -51,7 +51,9 @@
  */
 + (LASUser *)user;
 
-/// The username for the LASUser.
+/**
+ *  The username for the LASUser.
+ */
 @property (nonatomic, strong) NSString *username;
 
 /**
@@ -59,15 +61,27 @@
  */
 @property (nonatomic, strong) NSString *password;
 
-/// The email for the LASUser.
+/**
+ *  The email for the LASUser.
+ */
 @property (nonatomic, strong) NSString *email;
 
+/**
+ *  Whether the email is veriified.
+ */
+@property (nonatomic, readonly) BOOL emailVerified;
+
+/**
+ *  The linked passport's objectId
+ */
 @property (nonatomic, strong, readonly) NSString *passportId;
 
 /** @name Querying for Users */
 
-/*!
- Creates a query for LASUser objects.
+/**
+ *  Creates a query for LASUser objects.
+ *
+ *  @return a query for LASUser objects.
  */
 + (LASQuery *)query;
 
