@@ -17,8 +17,6 @@ typedef NS_ENUM(NSUInteger, LASInAppMessageDismissButtonLocation){
 @interface LASMarketingManager : NSObject
 
 /** Enable the marketing module to recieve In-App messages.
- 
- Now, marketing will be enabled automatically when setApplicationId:clientKey: get called.
  */
 + (void)enable;
 

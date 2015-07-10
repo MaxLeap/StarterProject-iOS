@@ -14,7 +14,7 @@
 
 /*!
  */
-NS_EXTENSION_UNAVAILABLE("")
+__deprecated_msg("") NS_EXTENSION_UNAVAILABLE("")
 @interface LASPushManager : NSObject
 
 /*!
