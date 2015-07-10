@@ -103,5 +103,13 @@ typedef void (^AppRatingAlertViewCompletionBlock)(HCAppRateAlertAction);
  */
 + (void) showAlertToRateAppWithCompletionBlock:(AppRatingAlertViewCompletionBlock)completionBlock;
 
+/** Get the new message count for replies to new conversations.
+ *
+ *  If you want to show your user notifications for replies on any ongoing conversation, you can get the notification count asynchronously by using this method. You can get result from the block.
+ *  
+ *  @param block The block with the result will be excute on main thread. It should have following signatures: (NSInteger count).
+ */
+- (void)getNewMessageCountInBackgroundWithBlock:(void(^)(NSInteger count))block;
+
 @end
 

@@ -6,7 +6,7 @@
 @class LASObject, LASUser, LASPassport, LASFile, LASPrivateFile, LASConfig;
 
 // Version
-#define LAS_VERSION @"1.5.0"
+#define LAS_VERSION @"1.5.1"
 
 extern NSString *const kLASDeviceType;
 

@@ -13,6 +13,9 @@
 
 @interface LASPrivateFileManager : NSObject
 
+#pragma mark -
+/*! @name Upload Private Files to LAS */
+
 /**
  *  *Asynchronously* encrypted and upload file at file.localPath to LAS file servers.
  *
@@ -41,6 +44,9 @@
  *  @param progressBlock   Block to notify the upload progress, it should have the following argument signature: (int percentDone)
  */
 + (void)saveFileInBackground:(LASPrivateFile *)file overwrite:(BOOL)shouldOverwrite block:(LASBooleanResultBlock)block progressBlock:(LASProgressBlock)progressBlock;
+
+#pragma mark -
+/*! @name Download Private Files */
 
 /**
  *  Get the default path for downloading the file on LAS file servers which located at the remotePath.
@@ -110,6 +116,9 @@
  */
 + (void)downloadFileAtRemotePath:(NSString *)remotePath toLocalPath:(NSString *)localPath block:(LASBooleanResultBlock)block progressBlock:(LASProgressBlock)progressBlock;
 
+#pragma mark -
+/*! @name Delete Private Files */
+
 /**
  *  Delete the file at file.remotePath from remote server.
  *
@@ -125,6 +134,9 @@
  *  @param block    The block should have the following argument signature: (BOOL success, NSError *error)
  */
 + (void)deleteAllInBackground:(NSArray *)fileList block:(LASBooleanResultBlock)block;
+
+#pragma mark -
+/*! @name Get Metadata of a Private File */
 
 /**
  *  Gets the metadata of a file and excutes the block when done.
@@ -149,6 +161,7 @@
  */
 + (void)getMetaDataInBackground:(LASPrivateFile *)file skip:(int)skip limit:(int)limit block:(LASBooleanResultBlock)block;
 
+#pragma mark -
 /**
  *  Get the usage of current user.
  *
@@ -156,6 +169,7 @@
  */
 + (void)getUsage:(LASUsageResultBlock)block;
 
+#pragma mark -
 /**
  *  Copys a file to another remote path. After copy, the block will give you the new file.
  *
@@ -178,6 +192,17 @@
 + (void)copyFileInBackground:(LASPrivateFile *)scrFile toPath:(NSString *)dstPath overwrite:(BOOL)shouldOverwrite block:(LASPrivateFileResultBlock)block;
 
 /**
+ *  Copys a collection of private files at `scrPaths` to remote paths `dstPaths`. The result will pass in the `block`. 
+ *  The block has three parameters: `isAllCompleted` indicates whether all files was copied; `completed` contains an array of path pairs which was copied successfully, its structure: [{"from":scrPath, "to":dstPath}]; `error` is nil unless the network request failed or `scrPaths` does not match with `dstPaths`.
+ *
+ *  @param scrPaths        An array of private file remote path.
+ *  @param dstPath         An orderedSet of destination remote path. These paths must match with scrPaths.
+ *  @param block           Block should have the following argument signature: (BOOL isAllCompleted, NSArray *completed, NSError *error)
+ */
++ (void)copyAllInBackground:(NSArray *)scrPaths toPaths:(NSOrderedSet *)dstPaths block:(void(^)(BOOL isAllCompleted, NSArray *completed, NSError *error))block;
+
+#pragma mark -
+/**
  *  Moves a file to another remote path. After moving, the block will give you the new file.
  *
  *  @discussion This method will overwrite dstPath.
@@ -199,6 +224,17 @@
 + (void)moveFileInBackground:(LASPrivateFile *)scrFile toPath:(NSString *)dstPath overwrite:(BOOL)shouldOverwrite block:(LASPrivateFileResultBlock)block;
 
 /**
+ *  Moves a collection of private files at `scrPaths` to remote paths `dstPaths`. The result will pass in the `block`.
+ *  The block has three parameters: `isAllCompleted` indicates whether all files was moved; `completed` contains an array of path pairs which was copied successfully, its structure: [{"from":scrPath, "to":dstPath}]; `error` is nil unless the network request failed or `scrPaths` does not match with `dstPaths`.
+ *
+ *  @param scrPaths        An array of private file remote path.
+ *  @param dstPath         An orderedSet of destination remote path. These paths must match with `scrPaths`.
+ *  @param block           Block should have the following argument signature: (BOOL isAllCompleted, NSArray *completed, NSError *error)
+ */
++ (void)moveAllInBackground:(NSOrderedSet *)scrPaths toPaths:(NSOrderedSet *)dstPaths block:(void(^)(BOOL isAllCompleted, NSArray *completed, NSError *error))block;
+
+#pragma mark -
+/**
  *  Create a folder at remote path file.remotePath.
  *
  *  @param file  The file representing a directory.
@@ -206,6 +242,7 @@
  */
 + (void)createFolderInBackground:(LASPrivateFile *)file block:(LASBooleanResultBlock)block;
 
+#pragma mark -
 /**
  *  Share a file or directory.
  *
@@ -214,6 +251,7 @@
  */
 + (void)shareFileInBackground:(LASPrivateFile *)file block:(LASBooleanResultBlock)block;
 
+#pragma mark -
 /** @name encrypt/decrpyt data util */
 
 /**

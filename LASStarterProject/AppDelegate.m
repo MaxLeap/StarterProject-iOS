@@ -22,8 +22,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // ****************************************************************************
     // Uncomment and fill in with your LAS credentials:
-     [LAS setApplicationId:@"your_application_id" clientKey:@"yout_client_key"];
-    //
+    // [LAS setApplicationId:@"your_application_id" clientKey:@"yout_client_key"];
+    // ****************************************************************************
+    
+    // ****************************************************************************
+    // If you want deliver in-app messages to your users, uncomment this line.
+    // [LASMarketingManager enable];
+    // Uncomment this line to test your in-app message;
+    // [LASMarketingManager enableTestMode];
+    // ****************************************************************************
+    
+    // ****************************************************************************
     // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
     // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
     // [LASFacebookUtils initializeFacebook];
@@ -40,21 +49,21 @@
     
     // Override point for customization after application launch.
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                        UIUserNotificationTypeBadge |
-                                                        UIUserNotificationTypeSound);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                 categories:nil];
-        [LASPushManager enablePushWithSettings:settings];
-    } else
-#endif
-    {
-        [LASPushManager enablePushTypes:(UIRemoteNotificationTypeBadge |
-                                         UIRemoteNotificationTypeAlert |
-                                         UIRemoteNotificationTypeSound)];
-    }
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+//    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+//                                                        UIUserNotificationTypeBadge |
+//                                                        UIUserNotificationTypeSound);
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+//                                                                                 categories:nil];
+//        [LASPushManager enablePushWithSettings:settings];
+//    } else
+//#endif
+//    {
+//        [LASPushManager enablePushTypes:(UIRemoteNotificationTypeBadge |
+//                                         UIRemoteNotificationTypeAlert |
+//                                         UIRemoteNotificationTypeSound)];
+//    }
     
     return YES;
 }
@@ -91,10 +100,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+//    [FBAppCall handleDidBecomeActiveWithSession:[LASFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+//    [[LASFacebookUtils session] close];
 }
 
 @end
