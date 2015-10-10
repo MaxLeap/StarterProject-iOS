@@ -1,6 +1,0 @@
-framework module LASFacebookUtils {
-  umbrella header "LASFacebookUtils.h"
-
-  export *
-  module * { export * }
-}
