@@ -2,16 +2,16 @@
 //  MLAnalytics.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 7/10/14.
-//  Copyright (c) 2014 iLegendsoft. All rights reserved.
-//
+
 
 #import <Foundation/Foundation.h>
 
+@class SKPaymentTransaction;
+
 /*!
- MLAnalytics provides an interface toMaxLeap's logging and analytics backend.<br>
+ MLAnalytics provides methods to logging user behavior to analytics backend.<br>
  <br>
- Methods will return immediately and cache the request (+ timestamp) to be handled "eventually." That is, the request will be sent immediately if possible or the next time a network connection is available otherwise.
+ Events for Session starting and session ending are logged automatically when app enter foreground or background.
  */
 @interface MLAnalytics : NSObject
 
@@ -29,61 +29,59 @@
 + (void)setSessionContinueSeconds:(int)seconds;
 
 #pragma mark -
-/** @name Custom Analytics */
+/** @name Custom Event Analytics */
 
 /*!
- Tracks the occurrence of a custom event. MaxLeap will store a data point at the time of invocation with the given event name.
+ Tracks the occurrence of a custom event and reports to MaxLeap backend.
  
- @param name The name of the custom event to report to MaxLeap as having happened.
+ @param name The name of the custom event.
  */
 + (void)trackEvent:(NSString *)name;
 
 /**
- *  Tracks the occurrence of a custom event. MaxLeap will store a data point at the time of invocation with the given event name.
+ *  Tracks the occurrence of a custom event and reports to MaxLeap backend.
  *
- *  @param name  The name of the custom event to report to MaxLeap as having happened.
+ *  @param name  The name of the custom event.
  *  @param count The number of this event occurred.
  */
 + (void)trackEvent:(NSString *)name count:(int)count;
 
 /**
- *  Tracks the occurrence of a custom event with additional dimensions. MaxLeap will store a data point at the time of invocation with the given event name.<br>
+ *  Tracks the occurrence of a custom event with additional parameters.<br>
  *
- *  Dimensions will allow segmentation of the occurrences of this custom event. Keys and values should be NSStrings, and will throw otherwise.<br>
+ *  Event parameters can be used to provide additional information about the event. The parameters is a dictionary containing Key-Value pairs of parameters. Keys and values should be NSStrings.<br>
  *
- *  To track a user signup along with additional metadata, consider the following:<br>
+ *  The following is a sample to track a purchase with additional parameters:<br>
  *
  *  @code
- *  NSDictionary *dimensions = @{@"gender": @"m",
- *                               @"source": @"web",
- *                               @"dayType": @"weekend" };
- *  [MLAnalytics trackEvent:@"signup" dimensions:dimensions];
+ *  NSDictionary *parameters = @{@"productName": @"iPhone 6s",
+ *                               @"productCategory": @"electronics"};
+ *  [MLAnalytics trackEvent:@"productPurchased" parameters:parameters];
  *  @endcode
  *
- *  @param name       The name of the custom event to report to MaxLeap as having happened.
- *  @param dimensions The dictionary of information by which to segment this event.
+ *  @param name       The name of the custom event.
+ *  @param parameters The dictionary of additional information for this event.
  */
-+ (void)trackEvent:(NSString *)name dimensions:(NSDictionary<NSString*, NSString*> *)dimensions;
++ (void)trackEvent:(NSString *)name parameters:(NSDictionary<NSString*, NSString*> *)parameters;
 
 /**
- *  Tracks the occurrence of a custom event with additional dimensions and the count it occurred. MaxLeap will store a data point at the time of invocation with the given event name.<br>
+ *  Tracks the occurrence of a custom event with additional parameters.<br>
  *
- *  Dimensions will allow segmentation of the occurrences of this custom event. Keys and values should be NSStrings, and will throw otherwise.<br>
+ *  Event parameters can be used to provide additional information about the event. The parameters is a dictionary containing Key-Value pairs of parameters. Keys and values should be NSStrings.<br>
  *
- *  To track a user signup along with additional metadata, consider the following:<br>
+ *  The following is a sample to track a purchase with additional parameters:<br>
  *
  *  @code
- *  NSDictionary *dimensions = @{@"gender": @"m",
- *                               @"source": @"web",
- *                               @"dayType": @"weekend" };
- *  [MLAnalytics trackEvent:@"signup" dimensions:dimensions count:1];
+ *  NSDictionary *parameters = @{@"productName": @"iPhone 6s",
+ *                               @"productCategory": @"electronics"};
+ *  [MLAnalytics trackEvent:@"productPurchased" parameters:parameters];
  *  @endcode
  *
- *  @param name       The name of the custom event to report to MaxLeap as having happened.
- *  @param dimensions The dictionary of information by which to segment this event.
+ *  @param name       The name of the custom event.
+ *  @param parameters The dictionary of additional information for this event.
  *  @param count      The number of this event occurred.
  */
-+ (void)trackEvent:(NSString *)name dimensions:(NSDictionary<NSString*, NSString*> *)dimensions count:(int)count;
++ (void)trackEvent:(NSString *)name parameters:(NSDictionary<NSString*, NSString*> *)parameters count:(int)count;
 
 #pragma mark -
 /** @name Page View Analytics */
@@ -105,5 +103,40 @@
  *  @param pageName The name of the page.
  */
 + (void)endLogPageView:(NSString *)pageName;
+
+#pragma mark -
+/** @name IAP Purchase Analytics */
+
+/**
+ * Tracks the beginning of requesting iap purchase.
+ *
+ * @param transaction    The transaction
+ * @param isSubscription Whether the transaction is a subscription
+ */
++ (void)onPurchaseRequest:(SKPaymentTransaction *)transaction isSubscription:(BOOL)isSubscription;
+
+/**
+ * Tracks the success of iap purchase.
+ *
+ * @param transaction    The transaction
+ * @param isSubscription Whether the transaction is a subscription
+ */
++ (void)onPurchaseSuccess:(SKPaymentTransaction *)transaction isSubscription:(BOOL)isSubscription;
+
+/**
+ * Tracks the occurrence of cancelling iap purchase.
+ *
+ * @param transaction    The transaction
+ * @param isSubscription Whether the transaction is a subscription
+ */
++ (void)onPurchaseCancelled:(SKPaymentTransaction *)transaction isSubscription:(BOOL)isSubscription;
+
+/**
+ * Tracks the failure of iap purchase.
+ *
+ * @param transaction    The transaction
+ * @param isSubscription Whether the transaction is a subscription
+ */
++ (void)onPurchaseFailed:(SKPaymentTransaction *)transaction isSubscription:(BOOL)isSubscription;
 
 @end

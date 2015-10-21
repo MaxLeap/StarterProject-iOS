@@ -2,9 +2,7 @@
 //  MLObject.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 6/23/14.
-//  Copyright (c) 2014 iLegendsoft. All rights reserved.
-//
+
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLConstants.h>
@@ -12,10 +10,10 @@
     #import <MaxLeap/MLConstants.h>
 #endif
 
-@class MLACL, MLRelation;
+@class MLRelation;
 
 /*!
- A MaxLeap Framework Object that is a local representation of data persisted to the MaxLeap. This is the main class that is used to interact with objects in your app.
+ The MLObject class represent the data persisted to the MaxLeap cloud. This is the main class to interact with to fetch data from and save data to the cloud.
  */
 @interface MLObject : NSObject
 
@@ -82,11 +80,6 @@
  When the object was created.
  */
 @property (nonatomic, strong, readonly) NSDate *createdAt;
-
-/*!
- The ACL for this object.
- */
-@property (nonatomic, strong, readonly) MLACL *ACL;
 
 /*!
  Returns an array of the keys contained in this object. This does not include createdAt, updatedAt, authData, or objectId. It does include things like username and ACL.

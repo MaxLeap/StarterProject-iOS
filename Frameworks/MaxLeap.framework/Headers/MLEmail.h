@@ -2,9 +2,6 @@
 //  MLEmail.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 15/4/21.
-//  Copyright (c) 2015年 ilegendsoft. All rights reserved.
-//
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLConstants.h>
@@ -58,6 +55,8 @@
 
 /**
  * Send this email.
+ *
+ * @param block The block to excute after email sending finish.
  */
 - (void)sendInBackgroundWithBlock:(MLBooleanResultBlock)block;
 

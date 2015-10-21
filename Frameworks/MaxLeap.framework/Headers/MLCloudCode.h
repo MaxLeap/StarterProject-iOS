@@ -2,9 +2,6 @@
 //  MLCloudCode.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 10/13/14.
-//  Copyright (c) 2014 iLegendsoft. All rights reserved.
-//
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLConstants.h>
@@ -13,7 +10,7 @@
 #endif
 
 /*!
- The `MLCloudCode` class provides methods for interacting with MaxLeap Functions.
+ The `MLCloudCode` class provides methods for interacting with MaxLeap Cloud Functions.
  */
 @interface MLCloudCode : NSObject
 

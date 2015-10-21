@@ -2,9 +2,6 @@
 //  MLHelpCenter.h
 //  MLHelpCenter
 //
-//  Created by Sun Jin on 14/12/23.
-//  Copyright (c) 2014年 MaxLeap. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

@@ -20,10 +20,9 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MaxLeap setApplicationId:@"55b202f760b2173daeff03b1" clientKey:@"Yy1VSEJlUHNnQzFRcHBudTAzWGhSdw"];
     // ****************************************************************************
-    // Uncomment and fill in with your MaxLeap credentials:
-    // [MaxLeap setApplicationId:@"your_application_id" clientKey:@"yout_client_key"];
+#warning Uncomment and fill in with your MaxLeap credentials:
+    // [MaxLeap setApplicationId:@"your_application_id" clientKey:@"yout_client_key" site:MLSiteUS];
     //
     // ****************************************************************************
     // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
@@ -41,8 +40,6 @@
     // record performance data for push notifications
     // [MLMarketingManager handlePushNotificationOpened:launchOptions];
     // ****************************************************************************
-    
-    [MLUser enableAutomaticUser];
     
     // Override point for customization after application launch.
     
@@ -78,19 +75,17 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Save deviceToken on Leap Cloud servers.
+    // Save deviceToken on MaxLeap servers.
     [[MLInstallation currentInstallation] setDeviceTokenFromData:deviceToken];
     [[MLInstallation currentInstallation] saveInBackgroundWithBlock:nil];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    // record performance data for push notifications
-    [MLMarketingManager handlePushNotificationOpened:userInfo];
+    // handle the remote notification
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    // record performance data for push notifications
-    [MLMarketingManager handlePushNotificationOpened:userInfo];
+    // handle the remote notification
 }
  */
 

@@ -3,14 +3,30 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@class MLObject, MLUser, MLPassport, MLFile, MLPrivateFile, MLConfig;
+@class MLObject, MLUser, MLFile, MLPrivateFile, MLConfig;
 
 ///--------------------------------------
 /// @name Version
 ///--------------------------------------
 
 // MaxLeap SDK Version
-#define MaxLeap_VERSION @"2.0.0"
+#define MaxLeap_VERSION @"2.0.1"
+
+///--------------------------------------
+/// @name MaxLeap Sites
+///--------------------------------------
+
+/**
+ * This enum represents MaxLeap server location.
+ */
+typedef NS_ENUM(int, MLSite) {
+    
+    /** Use servers in US. */
+    MLSiteUS = 0,
+    
+    /** Use servers in CN. */
+    MLSiteCN = 1
+};
 
 ///--------------------------------------
 /// @name Errors
@@ -93,9 +109,6 @@ typedef NS_ENUM(NSInteger, MLErrorCode) {
     
     /*! @abstract 122: Invalid file name. A file name contains only a-zA-Z0-9_. characters and is between 1 and 36 characters. */
     kMLErrorInvalidFileName = 122,
-    
-    /*! @abstract 123: Invalid ACL. An ACL with an invalid format was saved. This should not happen if you use MLACL. */
-    kMLErrorInvalidACL = 123,
     
     /*! @abstract 124: The request timed out on the server. Typically this indicates the request is too expensive. */
     kMLErrorTimeout = 124,
@@ -204,7 +217,6 @@ typedef void (^MLArrayResultBlock)(NSArray *objects, NSError *error);
 typedef void (^MLDictionaryResultBlock)(NSDictionary *result, NSError *error);
 typedef void (^MLObjectResultBlock)(MLObject *object, NSError *error);
 typedef void (^MLUserResultBlock)(MLUser *user, NSError *error);
-typedef void (^MLPassportResultBlock)(MLPassport *passport, NSError *error);
 typedef void (^MLDataResultBlock)(NSData *data, NSError *error);
 typedef void (^MLDataStreamResultBlock)(NSInputStream *stream, NSError *error);
 typedef void (^MLStringResultBlock)(NSString *string, NSError *error);

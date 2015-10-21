@@ -2,9 +2,7 @@
 //  MLUser.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 6/23/14.
-//  Copyright (c) 2014 iLegendsoft. All rights reserved.
-//
+
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLObject.h>
@@ -19,7 +17,7 @@
 @class MLQuery;
 
 /*!
- A MaxLeap Framework User Object that is a local representation of a user persisted to the MaxLeap. This class is a subclass of a MLObject, and retains the same functionality of a MLObject. You can also user MLDataManager's api to update a user.<br>
+ A MLUser object represent a user persisted to the MaxLeap.<br>
  */
 @interface MLUser : MLObject <MLSubclassing>
 
@@ -42,12 +40,6 @@
  */
 + (instancetype)currentUser;
 
-/*!
- Enables automatic creation of anonymous users.  After calling this method, [MLUser currentUser] will always have a value. The user will only be created on the server once the user has been saved, or once an object with a relation to that user or an ACL that refers to the user has been saved.<br>
- 
- Note: saveEventually will not work if an item being saved has a relation to an automatic user that has never been saved.
- */
-+ (void)enableAutomaticUser;
 
 /** @name Creating a New User */
 
@@ -162,14 +154,6 @@
  */
 - (void)checkIsPasswordMatchInBackground:(NSString *)password block:(MLBooleanResultBlock)block;
 
-/**
- *  Check whether the password machtes the MLUserwhich's username is "username".
- *
- *  @param password the password
- *  @param username the username
- *  @param block    The block to execute. The block should have the following argument signature: (BOOL isMatch, NSError *error)
- */
-+ (void)checkIsPassword:(NSString *)password matchUsernameInBackground:(NSString *)username block:(MLBooleanResultBlock)block;
 
 /**
  *  Check the username is exist or not.

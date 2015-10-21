@@ -2,9 +2,6 @@
 //  MLInstallation.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 7/8/14.
-//  Copyright (c) 2014 iLegendsoft. All rights reserved.
-//
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLObject.h>
@@ -17,7 +14,7 @@
 @class MLQuery;
 
 /*!
- A MaxLeap Framework Installation Object that is a local representation of an installation persisted to the MaxLeap. This class is a subclass of a MLObject, and retains the same functionality of a MLObject, but also extends it with installation-specific fields and related immutability and validity checks.<br>
+ An Installation Object is a local representation of an installation persisted to the MaxLeap. This class is a subclass of a MLObject, and retains the same functionality of a MLObject, but also extends it with installation-specific fields and related immutability and validity checks.<br>
  
  A valid MLInstallation can only be instantiated via +[MLInstallation currentInstallation] because the required identifier fields are readonly. The timeZone and badge fields are also readonly properties which are automatically updated to match the device's time zone and application badge when the MLInstallation is saved, thus these fields might not reflect the latest device state if the installation has not recently been saved.<br>
  

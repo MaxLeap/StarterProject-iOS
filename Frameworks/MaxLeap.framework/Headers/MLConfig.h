@@ -2,9 +2,6 @@
 //  MLConfig.h
 //  MaxLeap
 //
-//  Created by Sun Jin on 15/2/9.
-//  Copyright (c) 2015年 ilegendsoft. All rights reserved.
-//
 
 #ifdef EXTENSION_IOS
     #import <MaxLeapExt/MLConstants.h>
