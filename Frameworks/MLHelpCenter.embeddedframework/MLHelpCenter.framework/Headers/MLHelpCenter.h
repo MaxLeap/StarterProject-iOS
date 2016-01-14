@@ -7,6 +7,8 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  The result types of asking user to rate app.
  */
@@ -88,7 +90,7 @@ typedef NS_ENUM(NSInteger, HCAppRateAlertAction){
  *
  *  @param block The block with the result will be excute on main thread. It should have following signatures: (NSInteger count).
  */
-- (void)getNewMessageCountInBackgroundWithBlock:(void(^)(NSInteger count))block;
+- (void)getNewMessageCountInBackgroundWithBlock:(nullable void(^)(NSInteger count))block;
 
 /** Show an alert to request app rating
  *
@@ -97,7 +99,9 @@ typedef NS_ENUM(NSInteger, HCAppRateAlertAction){
  *
  *  @param completionBlock The block gives result of app rating request. It should have folowing signature: (HCAppRateAlertAction result)
  */
-+ (void) showAlertToRateAppWithCompletionBlock:(void (^)(HCAppRateAlertAction))completionBlock;
++ (void) showAlertToRateAppWithCompletionBlock:(nullable void (^)(HCAppRateAlertAction))completionBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END
 

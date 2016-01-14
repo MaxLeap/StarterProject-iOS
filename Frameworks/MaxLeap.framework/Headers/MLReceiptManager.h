@@ -37,6 +37,6 @@
  @param receiptData The receipt data contained in a transaction.
  @param block the completion block will excute on main thread.
  */
-+ (void)verifyPaymentReceipt:(NSData *)receiptData completion:(MLBooleanResultBlock)block;
++ (void)verifyPaymentReceipt:(nullable NSData *)receiptData completion:(nullable MLBooleanResultBlock)block;
 
 @end

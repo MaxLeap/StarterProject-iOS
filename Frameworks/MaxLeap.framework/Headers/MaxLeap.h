@@ -11,10 +11,10 @@
 #import <MaxLeap/MLSubclassing.h>
 #import <MaxLeap/MLObject+Subclass.h>
 #import <MaxLeap/MLQuery.h>
-#import <MaxLeap/MLSearchQuery.h>
 #import <MaxLeap/MLInstallation.h>
 #import <MaxLeap/MLUser.h>
 #import <MaxLeap/MLAnonymousUtils.h>
+#import <MaxLeap/MLSmsCodeUtils.h>
 #import <MaxLeap/MLCloudCode.h>
 #import <MaxLeap/MLFile.h>
 #import <MaxLeap/MLPrivateFile.h>
@@ -25,6 +25,8 @@
 #import <MaxLeap/MLLogger.h>
 #import <MaxLeap/MLAnalytics.h>
 #import <MaxLeap/MLGameAnalytics.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 /*!
  The main SDK class to config MaxLeap framework.
@@ -66,3 +68,4 @@
 
 @end
 
+NS_ASSUME_NONNULL_END

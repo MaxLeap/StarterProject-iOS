@@ -8,22 +8,32 @@
 
 @class MLQuery, MLObject;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  A class that is used to access all of the children of a many-to-many relationship. Each instance of MLRelation is associated with a particular parent object and key.
  */
 @interface MLRelation : NSObject
 
-@property (readonly, nonatomic, strong) NSString *targetClass;
+/*!
+ @abstract The name of the class of the target child objects.
+ */
+@property (readonly, nonatomic, strong, nullable) NSString *targetClass;
 
 
-#pragma mark Accessing objects
+///--------------------------------------
+/// @name Accessing Objects
+///--------------------------------------
+
 /*!
  @return A MLQuery that can be used to get objects in this relation.
  */
-- (MLQuery *)query;
+- (nullable MLQuery *)query;
 
 
-#pragma mark Modifying relations
+///--------------------------------------
+/// @name Modifying Relations
+///--------------------------------------
 
 /*!
  Adds a relation to the passed in object.
@@ -40,3 +50,5 @@
 - (void)removeObject:(MLObject *)object;
 
 @end
+
+NS_ASSUME_NONNULL_END

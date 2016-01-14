@@ -16,15 +16,15 @@
 		9D889DDA1A1C763E0016A732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D889DD81A1C763E0016A732 /* Main.storyboard */; };
 		9D889DDC1A1C763E0016A732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D889DDB1A1C763E0016A732 /* Images.xcassets */; };
 		9D889DDF1A1C763E0016A732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D889DDD1A1C763E0016A732 /* LaunchScreen.xib */; };
-		9DA8D9B81BC8E3D700644D48 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AD1BC8E3D700644D48 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9B91BC8E3D700644D48 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AE1BC8E3D700644D48 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BA1BC8E3D700644D48 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AF1BC8E3D700644D48 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BB1BC8E3D700644D48 /* MaxLeap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B01BC8E3D700644D48 /* MaxLeap.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BC1BC8E3D700644D48 /* MLFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B11BC8E3D700644D48 /* MLFacebookUtilsV4.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BD1BC8E3D700644D48 /* MLHelpCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B31BC8E3D700644D48 /* MLHelpCenter.framework */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BE1BC8E3D700644D48 /* MLHelpCenterImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B51BC8E3D700644D48 /* MLHelpCenterImages.bundle */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9BF1BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B61BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle */; settings = {ASSET_TAGS = (); }; };
-		9DA8D9C01BC8E3D700644D48 /* MLHelpCenterThemes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B71BC8E3D700644D48 /* MLHelpCenterThemes.bundle */; settings = {ASSET_TAGS = (); }; };
+		9DA8D9B81BC8E3D700644D48 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AD1BC8E3D700644D48 /* Bolts.framework */; };
+		9DA8D9B91BC8E3D700644D48 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AE1BC8E3D700644D48 /* FBSDKCoreKit.framework */; };
+		9DA8D9BA1BC8E3D700644D48 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AF1BC8E3D700644D48 /* FBSDKLoginKit.framework */; };
+		9DA8D9BB1BC8E3D700644D48 /* MaxLeap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B01BC8E3D700644D48 /* MaxLeap.framework */; };
+		9DA8D9BC1BC8E3D700644D48 /* MLFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B11BC8E3D700644D48 /* MLFacebookUtilsV4.framework */; };
+		9DA8D9BD1BC8E3D700644D48 /* MLHelpCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B31BC8E3D700644D48 /* MLHelpCenter.framework */; };
+		9DA8D9BE1BC8E3D700644D48 /* MLHelpCenterImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B51BC8E3D700644D48 /* MLHelpCenterImages.bundle */; };
+		9DA8D9BF1BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B61BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle */; };
+		9DA8D9C01BC8E3D700644D48 /* MLHelpCenterThemes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B71BC8E3D700644D48 /* MLHelpCenterThemes.bundle */; };
 		9DA8D9C21BC8EB8700644D48 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9C11BC8EB8700644D48 /* libsqlite3.tbd */; };
 		9DA8D9C41BC8EB9700644D48 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9C31BC8EB9700644D48 /* libz.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -368,7 +368,7 @@
 					"$(PROJECT_DIR)/Frameworks/MLHelpCenter.embeddedframework",
 				);
 				INFOPLIST_FILE = "${TARGET_NAME}/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.las.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MaxLeapStarterProject;
@@ -389,7 +389,7 @@
 					"$(PROJECT_DIR)/Frameworks/MLHelpCenter.embeddedframework",
 				);
 				INFOPLIST_FILE = "${TARGET_NAME}/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.las.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MaxLeapStarterProject;

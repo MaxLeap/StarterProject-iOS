@@ -3,8 +3,13 @@
 //  MaxLeap
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#ifdef EXTENSION_IOS
+#   import <MaxLeapExt/MLConstants.h>
+#else
+#   import <MaxLeap/MLConstants.h>
+#endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The dissmiss button on in-app message view is always on top.
@@ -19,12 +24,12 @@ typedef NS_ENUM(NSUInteger, MLInAppMessageDismissButtonLocation){
 };
 
 /**
- *  Enter point to enable marketing to recieve In-App messages and test In-App messages.
+ *  Enter point to enable marketing to receive In-App messages and test In-App messages.
  */
 @interface MLMarketingManager : NSObject
 
 /** 
- *  Enable the marketing module to recieve In-App messages.
+ *  Enable the marketing module to receive In-App messages.
  */
 + (void)enable;
 
@@ -47,9 +52,10 @@ typedef NS_ENUM(NSUInteger, MLInAppMessageDismissButtonLocation){
 ///--------------------------------------
 
 /** Used to record performance data for push notifications
- @param notificationInfo The dictionary from `didFinishLaunchingWithOptions:` should be passed on to this method
+ @param notificationInfo The dictionary from either `didFinishLaunchingWithOptions:` or
+ `didReceiveRemoteNotification:` should be passed on to this method.
  */
-+ (void)handlePushNotificationOpened:(NSDictionary *)notificationInfo;
++ (void)handlePushNotificationOpened:(nullable NSDictionary *)notificationInfo;
 
 #pragma mark - In-App Message
 ///--------------------------------------
@@ -83,9 +89,12 @@ typedef NS_ENUM(NSUInteger, MLInAppMessageDismissButtonLocation){
  */
 + (MLInAppMessageDismissButtonLocation)inAppMessageDismissButtonLocation;
 
+#pragma mark - In-App Message Debugging
 + (void)triggerInAppMessage:(NSString *)triggerName;
-+ (void)triggerInAppMessage:(NSString *)triggerName withAttributes:(NSDictionary<NSString*, NSString*> *)attributes;
++ (void)triggerInAppMessage:(NSString *)triggerName withAttributes:(nullable NSDictionary ML_GENERIC(NSString*, NSString*) *)attributes;
 
 + (void)dismissCurrentInAppMessage;
 
 @end
+
+NS_ASSUME_NONNULL_END

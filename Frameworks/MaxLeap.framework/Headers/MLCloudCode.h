@@ -20,6 +20,6 @@
  @param parameters The parameters to send to the function.
  @param block The block to execute. The block should have the following argument signature:(id object, NSError *error).
  */
-+ (void)callFunctionInBackground:(NSString *)function withParameters:(NSDictionary *)parameters block:(MLIdResultBlock)block;
++ (void)callFunctionInBackground:(nonnull NSString *)function withParameters:(nullable NSDictionary *)parameters block:(nullable MLIdResultBlock)block;
 
 @end

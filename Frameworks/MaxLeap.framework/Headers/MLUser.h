@@ -16,6 +16,8 @@
 
 @class MLQuery;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  A MLUser object represent a user persisted to the MaxLeap.<br>
  */
@@ -27,7 +29,7 @@
 + (NSString *)leapClassName;
 
 /// The session token for the MLUser. This is set by the server upon successful authentication.
-@property (nonatomic, strong) NSString *sessionToken;
+@property (nonatomic, strong, nullable) NSString *sessionToken;
 
 /// Whether the MLUserwas just created from a request. This is only set after a Facebook or Twitter login.
 @property (readonly, nonatomic) BOOL isNew;
@@ -38,7 +40,7 @@
  Gets the currently logged in user from disk and returns an instance of it.
  @return Returns a MLUserthat is the currently logged in user. If there is none, returns nil.
  */
-+ (instancetype)currentUser;
++ (nullable instancetype)currentUser;
 
 
 /** @name Creating a New User */
@@ -59,43 +61,29 @@
 /**
  *  The username for the MLUser.
  */
-@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong, nullable) NSString *username;
 
 /**
  The password for the MLUser. This will not be filled in from the server with the password. It is only meant to be set.
  */
-@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong, nullable) NSString *password;
 
 /**
  *  The email for the MLUser.
  */
-@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong, nullable) NSString *email;
 
 /**
  *  Whether the email is veriified.
  */
 @property (nonatomic, readonly) BOOL emailVerified;
 
-/**
- *  The linked passport's objectId
- */
-@property (nonatomic, strong, readonly) NSString *passportId;
-
-/** @name Querying for Users */
-
-/**
- *  Creates a query for MLUserobjects.
- *
- *  @return a query for MLUserobjects.
- */
-+ (MLQuery *)query;
-
 /*!
  Signs up the user asynchronously. Make sure that password and username are set. This will also enforce that the username isn't already taken.
  
  @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
  */
-- (void)signUpInBackgroundWithBlock:(MLBooleanResultBlock)block;
+- (void)signUpInBackgroundWithBlock:(nullable MLBooleanResultBlock)block;
 
 /** @name Logging in */
 
@@ -108,7 +96,7 @@
  */
 + (void)logInWithUsernameInBackground:(NSString *)username
                              password:(NSString *)password
-                                block:(MLUserResultBlock)block;
+                                block:(nullable MLUserResultBlock)block;
 
 /** @name Becoming a user */
 /*!
@@ -117,7 +105,7 @@
  @param sessionToken The session token for the user.
  @param block The block to execute. The block should have the following argument signature: (MLUser *user, NSError *error)
  */
-+ (void)becomeInBackgroundWithSessionToken:(NSString *)sessionToken block:(MLUserResultBlock)block;
++ (void)becomeInBackgroundWithSessionToken:(NSString *)sessionToken block:(nullable MLUserResultBlock)block;
 
 /** @name Logging Out */
 
@@ -134,7 +122,7 @@
  @param email Email of the account to send a reset password request.
  @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
  */
-+ (void)requestPasswordResetForEmailInBackground:(NSString *)email block:(MLBooleanResultBlock)block;
++ (void)requestPasswordResetForEmailInBackground:(NSString *)email block:(nullable MLBooleanResultBlock)block;
 
 /** @name Requesting a Email Verify */
 
@@ -144,7 +132,7 @@
  @param email Email of the account to verify.
  @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
  */
-+ (void)requestEmailVerifyForEmailInBackground:(NSString *)email block:(MLBooleanResultBlock)block;
++ (void)requestEmailVerifyForEmailInBackground:(NSString *)email block:(nullable MLBooleanResultBlock)block;
 
 /**
  *  Check whether the password matches the user.
@@ -152,7 +140,7 @@
  *  @param password a password
  *  @param block    The block to execute. The block should have the following argument signature: (BOOL isMatch, NSError *error)
  */
-- (void)checkIsPasswordMatchInBackground:(NSString *)password block:(MLBooleanResultBlock)block;
+- (void)checkIsPasswordMatchInBackground:(NSString *)password block:(nullable MLBooleanResultBlock)block;
 
 
 /**
@@ -163,6 +151,8 @@
  *  @param username The username to check
  *  @param block    The block to execute. The block should have the following argument signature: (BOOL isExist, NSError *error)
  */
-+ (void)checkUsernameExists:(NSString *)username block:(MLBooleanResultBlock)block;
++ (void)checkUsernameExists:(NSString *)username block:(nullable MLBooleanResultBlock)block;
 
 @end
+
+NS_ASSUME_NONNULL_END

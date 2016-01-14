@@ -31,7 +31,7 @@
     // ****************************************************************************
     
     // initialize help center
-    [MLHelpCenter install];
+     [MLHelpCenter install];
     
     // ****************************************************************************
     // enable marketing to receive
@@ -53,20 +53,21 @@
  ///////////////////////////////////////////////////////////
  
 - (void)registerRemoteNotifications {
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000 // __IPHONE_8_0
+    if ( ! [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIRemoteNotificationType remoteNotificationTypes = (UIRemoteNotificationTypeBadge |
+                                                            UIRemoteNotificationTypeAlert |
+                                                            UIRemoteNotificationTypeSound);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:remoteNotificationTypes];
+    } else
+#endif
+    {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
                                                         UIUserNotificationTypeSound);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
                                                                                  categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    } else
-#endif
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                                               UIRemoteNotificationTypeAlert |
-                                                                               UIRemoteNotificationTypeSound)];
     }
 }
 
@@ -78,6 +79,10 @@
     // Save deviceToken on MaxLeap servers.
     [[MLInstallation currentInstallation] setDeviceTokenFromData:deviceToken];
     [[MLInstallation currentInstallation] saveInBackgroundWithBlock:nil];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
+    // handle remote notification registeration error
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -94,11 +99,19 @@
  ///////////////////////////////////////////////////////////
  // Uncomment this method if you are using Facebook
  ///////////////////////////////////////////////////////////
- 
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000  // __IPHONE_9_0
  - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
      return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
  }
- 
+#endif
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
+    id annotation = options[UIApplicationOpenURLOptionsAnnotationKey];
+    return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
  */
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -6,6 +6,11 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+/**
+ *  Track game mission events.
+ */
 @interface MLGAMission : NSObject
 
 /**
@@ -14,17 +19,17 @@
  * @param missionId The customize mission id.
  * @param type      The mission type
  */
-+ (void)onBegin:(NSString *)missionId type:(NSString *)type;
++ (void)onBegin:(NSString *)missionId type:(nullable NSString *)type;
 
 /**
- * Pause the mission tracking.
+ * Suspend the mission tracking timer.
  *
  * @param missionId The mission id
  */
 + (void)onPause:(NSString *)missionId;
 
 /**
- * Pause all the mission trackings.
+ * Suspend all the mission tracking timers.
  */
 + (void)pauseAll;
 
@@ -53,12 +58,14 @@
  * @param missionId The customize mission id.
  * @param cause     Reason of the mission failure
  */
-+ (void)onFailed:(NSString *)missionId failedCause:(NSString *)cause;
++ (void)onFailed:(NSString *)missionId failedCause:(nullable NSString *)cause;
 
 @end
 
 
-
+/**
+ *  Track the game item events.
+ */
 @interface MLGAItem : NSObject
 
 /**
@@ -88,12 +95,14 @@
  * @param count  The purchase number of items.
  * @param reason The reason why rewarding the item.
  */
-+ (void)onReward:(NSString *)item itemType:(NSString *)type itemCount:(int)count reason:(NSString *)reason;
++ (void)onReward:(NSString *)item itemType:(NSString *)type itemCount:(int)count reason:(nullable NSString *)reason;
 
 @end
 
 
-
+/**
+ *  Track game virture currency events.
+ */
 @interface MLGAVirtureCurrency : NSObject
 
 /**
@@ -146,3 +155,15 @@
 + (void)onReward:(double)virtualCurrencyAmount reason:(NSString *)reason;
 
 @end
+
+FOUNDATION_EXPORT NSString * const MLPaySourceAli;
+FOUNDATION_EXPORT NSString * const MLPaySourceAliApp;
+FOUNDATION_EXPORT NSString * const MLPaySourceWeiXin;
+FOUNDATION_EXPORT NSString * const MLPaySourceWeiXinApp;
+FOUNDATION_EXPORT NSString * const MLPaySourcePaypal;
+FOUNDATION_EXPORT NSString * const MLPaySourceAppStore;
+FOUNDATION_EXPORT NSString * const MLPaySourceAmazon;
+FOUNDATION_EXPORT NSString * const MLPaySourceUnion;
+FOUNDATION_EXPORT NSString * const MLPaySourceUnionApp;
+
+NS_ASSUME_NONNULL_END

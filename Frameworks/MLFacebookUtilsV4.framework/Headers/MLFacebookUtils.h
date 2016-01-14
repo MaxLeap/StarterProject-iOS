@@ -9,6 +9,8 @@
 
 #import <MaxLeap/MaxLeap.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  The `MLFacebookUtils` class provides utility functions for using Facebook authentication with <MLUser>s.
  
@@ -21,16 +23,16 @@
 ///--------------------------------------
 
 /*!
- @abstract Initializes Parse Facebook Utils.
+ @abstract Initializes MaxLeap Facebook Utils.
  
  @discussion You must provide your Facebook application ID as the value for FacebookAppID in your bundle's plist file
  as described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
  
- @warning You must invoke this in order to use the Facebook functionality in Parse.
+ @warning You must invoke this in order to use the Facebook functionality in MaxLeap.
  
  @param launchOptions The launchOptions as passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
  */
-+ (void)initializeFacebookWithApplicationLaunchOptions:(NSDictionary *)launchOptions;
++ (void)initializeFacebookWithApplicationLaunchOptions:(nullable NSDictionary *)launchOptions;
 
 /*!
  @abstract `FBSDKLoginManager` provides methods for configuring login behavior, default audience
@@ -38,7 +40,7 @@
  
  @returns An instance of `FBSDKLoginManager` that is used by `MLFacebookUtils`.
  */
-+ (FBSDKLoginManager *)facebookLoginManager;
++ (nullable FBSDKLoginManager *)facebookLoginManager;
 
 ///--------------------------------------
 /// @name Logging In
@@ -54,8 +56,8 @@
  @param block       The block to execute when the log in completes.
  It should have the following signature: `^(MLUser *user, NSError *error)`.
  */
-+ (void)logInInBackgroundWithReadPermissions:(NSArray *)permissions
-                                       block:(MLUserResultBlock)block;
++ (void)logInInBackgroundWithReadPermissions:(NSArray ML_GENERIC(NSString*) *)permissions
+                                       block:(nullable MLUserResultBlock)block;
 
 /*!
  @abstract *Asynchronously* logs in a user using Facebook with publish permissions.
@@ -67,8 +69,8 @@
  @param block       The block to execute when the log in completes.
  It should have the following signature: `^(MLUser *user, NSError *error)`.
  */
-+ (void)logInInBackgroundWithPublishPermissions:(NSArray *)permissions
-                                          block:(MLUserResultBlock)block;
++ (void)logInInBackgroundWithPublishPermissions:(NSArray ML_GENERIC(NSString*) *)permissions
+                                          block:(nullable MLUserResultBlock)block;
 
 /*!
  @abstract *Asynchronously* logs in a user using given Facebook Acess Token.
@@ -81,7 +83,7 @@
  It should have the following signature: `^(MLUser *user, NSError *error)`.
  */
 + (void)logInInBackgroundWithAccessToken:(FBSDKAccessToken *)accessToken
-                                   block:(MLUserResultBlock)block;
+                                   block:(nullable MLUserResultBlock)block;
 
 ///--------------------------------------
 /// @name Linking Users
@@ -100,8 +102,8 @@
  It should have the following signature: `^(BOOL succeeded, NSError *error)`.
  */
 + (void)linkUserInBackground:(MLUser *)user
-         withReadPermissions:(NSArray *)permissions
-                       block:(MLBooleanResultBlock)block;
+         withReadPermissions:(NSArray ML_GENERIC(NSString *) *)permissions
+                       block:(nullable MLBooleanResultBlock)block;
 
 /*!
  @abstract *Asynchronously* links Facebook with publish permissions to an existing <MLUser>.
@@ -116,8 +118,8 @@
  It should have the following signature: `^(BOOL succeeded, NSError *error)`.
  */
 + (void)linkUserInBackground:(MLUser *)user
-      withPublishPermissions:(NSArray *)permissions
-                       block:(MLBooleanResultBlock)block;
+      withPublishPermissions:(NSArray ML_GENERIC(NSString*) *)permissions
+                       block:(nullable MLBooleanResultBlock)block;
 
 /*!
  @abstract *Asynchronously* links Facebook Access Token to an existing <MLUser>.
@@ -133,7 +135,7 @@
  */
 + (void)linkUserInBackground:(MLUser *)user
              withAccessToken:(FBSDKAccessToken *)accessToken
-                       block:(MLBooleanResultBlock)block;
+                       block:(nullable MLBooleanResultBlock)block;
 
 /*!
  @abstract Unlinks the <MLUser> from a Facebook account *asynchronously*.
@@ -142,7 +144,7 @@
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
  */
-+ (void)unlinkUserInBackground:(MLUser *)user block:(MLBooleanResultBlock)block;
++ (void)unlinkUserInBackground:(MLUser *)user block:(nullable MLBooleanResultBlock)block;
 
 ///--------------------------------------
 /// @name Getting Linked State
@@ -155,6 +157,8 @@
  
  @returns `YES` if the user has their account linked to Facebook, otherwise `NO`.
  */
-+ (BOOL)isLinkedWithUser:(MLUser *)user;
++ (BOOL)isLinkedWithUser:(nullable MLUser *)user;
 
 @end
+
+NS_ASSUME_NONNULL_END

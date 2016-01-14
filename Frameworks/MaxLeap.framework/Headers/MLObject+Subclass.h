@@ -11,6 +11,8 @@
 
 @class MLQuery;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  <h3>Subclassing Notes</h3>
  
@@ -39,7 +41,7 @@
  
     MYGame *game = [[MYGame alloc] init];
     game.title = @"Bughouse";
-    [MLDataManager saveObjectInBackground:game block:^(BOOL succeeded, NSError *error) {
+    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
  
         } else {
@@ -82,7 +84,7 @@
  @param objectId The object id for the referenced object.
  @return A MLObject without data.
  */
-+ (id)objectWithoutDataWithObjectId:(NSString *)objectId;
++ (instancetype)objectWithoutDataWithObjectId:(nullable NSString *)objectId;
 
 /*!
  Registers an Objective-C class for MaxLeap to use for representing a given MaxLeap class.<br>
@@ -102,6 +104,8 @@
  
  A default implementation is provided by MLObject which should always be sufficient.
  */
-+ (MLQuery *)query;
++ (nullable MLQuery *)query;
 
 @end
+
+NS_ASSUME_NONNULL_END

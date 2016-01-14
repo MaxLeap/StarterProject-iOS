@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Image bundle name</key>
-	<string>MLHCImages.bundle</string>
+	<string>MLHelpCenterImages.bundle</string>
 	<key>Navigation Bar</key>
 	<dict>
 		<key>Title font name</key>

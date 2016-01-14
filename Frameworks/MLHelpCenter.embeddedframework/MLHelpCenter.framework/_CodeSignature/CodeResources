@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/MLHelpCenter.h</key>
 		<data>
-		qQzuF2+LacXgsUuayWtG2WQFzQU=
+		Qny9hGQL4m+CWHyJtyNaTFP7Dcc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		2NLoQkbFUdoT6/VAVbG14XSCz3E=
+		kT20h+qtOUU1aP23Rvul70/IBNA=
 		</data>
 		<key>MLHelpCenterImages.bundle/btn_arrow_nomal.png</key>
 		<data>
@@ -280,7 +280,7 @@
 		</dict>
 		<key>MLHelpCenterThemes.bundle/HelpCenterTheme.plist</key>
 		<data>
-		mR/uoBlV4dhP7mJe//4TP4o3JeY=
+		VYhq1yRcOcYzxWZpJMIgcE5gJIM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -291,7 +291,7 @@
 	<dict>
 		<key>Headers/MLHelpCenter.h</key>
 		<data>
-		qQzuF2+LacXgsUuayWtG2WQFzQU=
+		Qny9hGQL4m+CWHyJtyNaTFP7Dcc=
 		</data>
 		<key>MLHelpCenterImages.bundle/btn_arrow_nomal.png</key>
 		<data>
@@ -561,7 +561,7 @@
 		</dict>
 		<key>MLHelpCenterThemes.bundle/HelpCenterTheme.plist</key>
 		<data>
-		mR/uoBlV4dhP7mJe//4TP4o3JeY=
+		VYhq1yRcOcYzxWZpJMIgcE5gJIM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

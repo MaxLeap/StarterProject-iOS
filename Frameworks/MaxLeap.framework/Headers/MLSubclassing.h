@@ -7,6 +7,8 @@
 
 @class MLQuery;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  If a subclass of MLObject conforms to MLSubclassing and calls registerSubclass, MaxLeap will be able to use that class as the native class for a MaxLeap object.<br>
  
@@ -27,7 +29,7 @@
  @param objectId The object id for the referenced object.
  @return A MLObject without data.
  */
-+ (instancetype)objectWithoutDataWithObjectId:(NSString *)objectId;
++ (instancetype)objectWithoutDataWithObjectId:(nullable NSString *)objectId;
 
 /*! The name of the class as seen in the REST API. */
 + (NSString *)leapClassName;
@@ -45,3 +47,5 @@
 + (void)registerSubclass;
 
 @end
+
+NS_ASSUME_NONNULL_END

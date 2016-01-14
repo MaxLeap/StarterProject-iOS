@@ -4,9 +4,15 @@
 //
 
 
-#import <Foundation/Foundation.h>
+#ifdef EXTENSION_IOS
+#   import <MaxLeapExt/MLConstants.h>
+#else
+#   import <MaxLeap/MLConstants.h>
+#endif
 
 @class SKPaymentTransaction;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /*!
  MLAnalytics provides methods to logging user behavior to analytics backend.<br>
@@ -62,7 +68,7 @@
  *  @param name       The name of the custom event.
  *  @param parameters The dictionary of additional information for this event.
  */
-+ (void)trackEvent:(NSString *)name parameters:(NSDictionary<NSString*, NSString*> *)parameters;
++ (void)trackEvent:(NSString *)name parameters:(nullable NSDictionary ML_GENERIC(NSString*, NSString*) *)parameters;
 
 /**
  *  Tracks the occurrence of a custom event with additional parameters.<br>
@@ -81,7 +87,7 @@
  *  @param parameters The dictionary of additional information for this event.
  *  @param count      The number of this event occurred.
  */
-+ (void)trackEvent:(NSString *)name parameters:(NSDictionary<NSString*, NSString*> *)parameters count:(int)count;
++ (void)trackEvent:(NSString *)name parameters:(nullable NSDictionary ML_GENERIC(NSString*, NSString*) *)parameters count:(int)count;
 
 #pragma mark -
 /** @name Page View Analytics */
@@ -140,3 +146,5 @@
 + (void)onPurchaseFailed:(SKPaymentTransaction *)transaction isSubscription:(BOOL)isSubscription;
 
 @end
+
+NS_ASSUME_NONNULL_END

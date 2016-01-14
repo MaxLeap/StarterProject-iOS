@@ -9,6 +9,8 @@
     #import <MaxLeap/MLConstants.h>
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  A file of binary data stored on the MaxLeap servers. This can be a image, video, or anything else
  that an application needs to reference in a non-relational way.
@@ -30,24 +32,24 @@
  @param data The contents of hte new MLFile.
  @result A MLFile.
  */
-+ (instancetype)fileWithName:(NSString *)name data:(NSData *)data;
++ (instancetype)fileWithName:(nullable NSString *)name data:(NSData *)data;
 
 /*!
  Creates a file with the contents of another file.
  @param name The name of the new MLFile
  @param path The path to the file that will be uploaded to MaxLeap
  */
-+ (instancetype)fileWithName:(NSString *)name contentsAtPath:(NSString *)path;
++ (instancetype)fileWithName:(nullable NSString *)name contentsAtPath:(NSString *)path;
 
 /*!
  The name of the file.
  */
-@property (readonly) NSString *name;
+@property (readonly, copy, nullable) NSString *name;
 
 /*!
  The url of the file.
  */
-@property (readonly) NSString *url;
+@property (readonly, copy, nullable) NSString *url;
 
 @property (readonly) long long size;
 
@@ -59,7 +61,7 @@
 /*!
  Whether the data is available in memory or needs to be downloaded.
  */
-@property (assign, readonly) BOOL isDataAvailable;
+@property (readonly) BOOL isDataAvailable;
 
 #pragma mark -
 ///--------------------------------------
@@ -71,7 +73,7 @@
  
  @param block   The block should have the following argument signature: (BOOL succeeded, NSError *error)
  */
-- (void)saveInBackgroundWithBlock:(MLBooleanResultBlock)block;
+- (void)saveInBackgroundWithBlock:(nullable MLBooleanResultBlock)block;
 
 /*!
  Saves the file asynchronously and executes the given resultBlock. Executes the progressBlock periodically with the percent
@@ -80,7 +82,7 @@
  @param block   The block should have the following argument signature: (BOOL succeeded, NSError *error)
  @param progressBlock The block should have the following argument signature: (int percentDone)
  */
-- (void)saveInBackgroundWithBlock:(MLBooleanResultBlock)block progressBlock:(MLProgressBlock)progressBlock;
+- (void)saveInBackgroundWithBlock:(nullable MLBooleanResultBlock)block progressBlock:(nullable MLProgressBlock)progressBlock;
 
 #pragma mark -
 ///--------------------------------------
@@ -93,7 +95,7 @@
  @param error   Pointer to an NSError that will be set if necessary.
  @result The data of file. Returns nil if there was an error in fetching.
  */
-- (NSData *)getData:(NSError **)error;
+- (nullable NSData *)getData:(NSError  * __nullable * __nullable)error;
 
 /*!
  Asynchronously gets the data from cache if available or fetches its contents
@@ -101,7 +103,7 @@
  
  @param block   The block should have the following argument signature: (NSData *result, NSError *error)
  */
-- (void)getDataInBackgroundWithBlock:(MLDataResultBlock)block;
+- (void)getDataInBackgroundWithBlock:(nullable MLDataResultBlock)block;
 
 /*!
  This method is like getDataInBackgroundWithBlock: but avoids ever holding the
@@ -110,7 +112,7 @@
  
  @param block   The block should have the following argument signature: (NSInputStream *result, NSError *error)
  */
-- (void)getDataStreamInBackgroundWithBlock:(MLDataStreamResultBlock)block;
+- (void)getDataStreamInBackgroundWithBlock:(nullable MLDataStreamResultBlock)block;
 
 /*!
  Asynchronously gets the data from cache if available or fetches its contents
@@ -120,7 +122,7 @@
  @param resultBlock     The block should have the following argument signature: (NSData *result, NSError *error)
  @param progressBlock   The block should have the following argument signature: (int percentDone)
  */
-- (void)getDataInBackgroundWithBlock:(MLDataResultBlock)resultBlock progressBlock:(MLProgressBlock)progressBlock;
+- (void)getDataInBackgroundWithBlock:(nullable MLDataResultBlock)resultBlock progressBlock:(nullable MLProgressBlock)progressBlock;
 
 /*!
  This method is like getDataInBackgroundWithBlock:progressBlock: but avoids ever
@@ -130,7 +132,7 @@
  @param resultBlock     The block should have the following argument signature: (NSInputStream *result, NSError *error)
  @param progressBlock   The block should have the following argument signature: (int percentDone)
  */
-- (void)getDataStreamInBackgroundWithBlock:(MLDataStreamResultBlock)resultBlock progressBlock:(MLProgressBlock)progressBlock;
+- (void)getDataStreamInBackgroundWithBlock:(nullable MLDataStreamResultBlock)resultBlock progressBlock:(nullable MLProgressBlock)progressBlock;
 
 #pragma mark -
 ///--------------------------------------
@@ -153,13 +155,15 @@
  @param name    The name of a file.
  @param block   The block will execute on main thread.
  */
-+ (void)getFileInBackgroundWithName:(NSString *)name block:(MLFileResultBlock)block;
++ (void)getFileInBackgroundWithName:(NSString *)name block:(nullable MLFileResultBlock)block;
 
 /*!
  Get all files uploaded by current user.
  
- @param block The callback, will be executed on main thread. The block should have the following argument signature: (NSArray *objects, NSError *error).
+ @param block The callback, will be executed on main thread. The block should have the following argument signature: (NSArray<MLFile *> *files, NSError *error).
  */
-+ (void)getAllInBackgroundWithBlock:(MLArrayResultBlock)block;
++ (void)getAllInBackgroundWithBlock:(nullable MLArrayResultBlock)block;
 
 @end
+
+NS_ASSUME_NONNULL_END
