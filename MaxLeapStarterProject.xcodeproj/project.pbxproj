@@ -21,10 +21,6 @@
 		9DA8D9BA1BC8E3D700644D48 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9AF1BC8E3D700644D48 /* FBSDKLoginKit.framework */; };
 		9DA8D9BB1BC8E3D700644D48 /* MaxLeap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B01BC8E3D700644D48 /* MaxLeap.framework */; };
 		9DA8D9BC1BC8E3D700644D48 /* MLFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B11BC8E3D700644D48 /* MLFacebookUtilsV4.framework */; };
-		9DA8D9BD1BC8E3D700644D48 /* MLHelpCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9B31BC8E3D700644D48 /* MLHelpCenter.framework */; };
-		9DA8D9BE1BC8E3D700644D48 /* MLHelpCenterImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B51BC8E3D700644D48 /* MLHelpCenterImages.bundle */; };
-		9DA8D9BF1BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B61BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle */; };
-		9DA8D9C01BC8E3D700644D48 /* MLHelpCenterThemes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8D9B71BC8E3D700644D48 /* MLHelpCenterThemes.bundle */; };
 		9DA8D9C21BC8EB8700644D48 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9C11BC8EB8700644D48 /* libsqlite3.tbd */; };
 		9DA8D9C41BC8EB9700644D48 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA8D9C31BC8EB9700644D48 /* libz.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -48,10 +44,6 @@
 		9DA8D9AF1BC8E3D700644D48 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		9DA8D9B01BC8E3D700644D48 /* MaxLeap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxLeap.framework; path = Frameworks/MaxLeap.framework; sourceTree = "<group>"; };
 		9DA8D9B11BC8E3D700644D48 /* MLFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MLFacebookUtilsV4.framework; path = Frameworks/MLFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		9DA8D9B31BC8E3D700644D48 /* MLHelpCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MLHelpCenter.framework; sourceTree = "<group>"; };
-		9DA8D9B51BC8E3D700644D48 /* MLHelpCenterImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLHelpCenterImages.bundle; sourceTree = "<group>"; };
-		9DA8D9B61BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLHelpCenterLocalizable.bundle; sourceTree = "<group>"; };
-		9DA8D9B71BC8E3D700644D48 /* MLHelpCenterThemes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLHelpCenterThemes.bundle; sourceTree = "<group>"; };
 		9DA8D9C11BC8EB8700644D48 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9DA8D9C31BC8EB9700644D48 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -63,7 +55,6 @@
 			files = (
 				9DA8D9C41BC8EB9700644D48 /* libz.tbd in Frameworks */,
 				9DA8D9C21BC8EB8700644D48 /* libsqlite3.tbd in Frameworks */,
-				9DA8D9BD1BC8E3D700644D48 /* MLHelpCenter.framework in Frameworks */,
 				9DA8D9B91BC8E3D700644D48 /* FBSDKCoreKit.framework in Frameworks */,
 				9D2EC9121A1C890E00DC1988 /* MobileCoreServices.framework in Frameworks */,
 				9DA8D9BA1BC8E3D700644D48 /* FBSDKLoginKit.framework in Frameworks */,
@@ -129,32 +120,11 @@
 				9DA8D9AF1BC8E3D700644D48 /* FBSDKLoginKit.framework */,
 				9DA8D9B01BC8E3D700644D48 /* MaxLeap.framework */,
 				9DA8D9B11BC8E3D700644D48 /* MLFacebookUtilsV4.framework */,
-				9DA8D9B21BC8E3D700644D48 /* MLHelpCenter.embeddedframework */,
 				9D2EC9111A1C890E00DC1988 /* MobileCoreServices.framework */,
 				9D2EC90F1A1C888200DC1988 /* SystemConfiguration.framework */,
 				9D2EC90D1A1C886D00DC1988 /* CoreTelephony.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9DA8D9B21BC8E3D700644D48 /* MLHelpCenter.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				9DA8D9B31BC8E3D700644D48 /* MLHelpCenter.framework */,
-				9DA8D9B41BC8E3D700644D48 /* Resources */,
-			);
-			name = MLHelpCenter.embeddedframework;
-			path = Frameworks/MLHelpCenter.embeddedframework;
-			sourceTree = "<group>";
-		};
-		9DA8D9B41BC8E3D700644D48 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9DA8D9B51BC8E3D700644D48 /* MLHelpCenterImages.bundle */,
-				9DA8D9B61BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle */,
-				9DA8D9B71BC8E3D700644D48 /* MLHelpCenterThemes.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,11 +186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DA8D9BF1BC8E3D700644D48 /* MLHelpCenterLocalizable.bundle in Resources */,
 				9D889DDA1A1C763E0016A732 /* Main.storyboard in Resources */,
 				9D889DDF1A1C763E0016A732 /* LaunchScreen.xib in Resources */,
-				9DA8D9BE1BC8E3D700644D48 /* MLHelpCenterImages.bundle in Resources */,
-				9DA8D9C01BC8E3D700644D48 /* MLHelpCenterThemes.bundle in Resources */,
 				9D889DDC1A1C763E0016A732 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +335,7 @@
 					"$(PROJECT_DIR)/Frameworks/MLHelpCenter.embeddedframework",
 				);
 				INFOPLIST_FILE = "${TARGET_NAME}/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.las.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MaxLeapStarterProject;
@@ -389,7 +356,7 @@
 					"$(PROJECT_DIR)/Frameworks/MLHelpCenter.embeddedframework",
 				);
 				INFOPLIST_FILE = "${TARGET_NAME}/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.las.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MaxLeapStarterProject;

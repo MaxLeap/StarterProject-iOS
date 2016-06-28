@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Whether the MLUserwas just created from a request. This is only set after a Facebook or Twitter login.
 @property (readonly, nonatomic) BOOL isNew;
 
+/// The OAuth data from 3rd party platforms.
+@property (readonly, nonatomic) NSDictionary *oauthData;
+
 /** @name Accessing the Current User */
 
 /*!

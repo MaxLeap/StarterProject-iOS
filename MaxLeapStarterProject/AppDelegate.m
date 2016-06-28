@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import <MaxLeap/MaxLeap.h>
-#import <MLHelpCenter/MLHelpCenter.h>
 
 // If you are using Facebook, uncomment this line
 //#import <MLFacebookUtilsV4/MLFacebookUtils.h>
@@ -30,9 +29,6 @@
     // [MLFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     // ****************************************************************************
     
-    // initialize help center
-     [MLHelpCenter install];
-    
     // ****************************************************************************
     // enable marketing to receive
     // [MLMarketingManager enable];
@@ -42,6 +38,18 @@
     // ****************************************************************************
     
     // Override point for customization after application launch.
+    
+    // ****************************************************************************
+    // test the connection
+    // MLObject *obj = [MLObject objectWithoutDataWithClassName:@"Test" objectId:@"561c83c0226"];
+    // [obj fetchIfNeededInBackgroundWithBlock:^(MLObject * _Nullable object, NSError * _Nullable error) {
+    //     if (error.code == kMLErrorInvalidObjectId) {
+    //         NSLog(@"已经能够正确连接上您的云端应用");
+    //     } else {
+    //         NSLog(@"应用访问凭证不正确，请检查。");
+    //     }
+    // }];
+    // ****************************************************************************
     
     return YES;
 }
@@ -53,21 +61,20 @@
  ///////////////////////////////////////////////////////////
  
 - (void)registerRemoteNotifications {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000 // __IPHONE_8_0
-    if ( ! [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIRemoteNotificationType remoteNotificationTypes = (UIRemoteNotificationTypeBadge |
-                                                            UIRemoteNotificationTypeAlert |
-                                                            UIRemoteNotificationTypeSound);
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:remoteNotificationTypes];
-    } else
-#endif
-    {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
                                                         UIUserNotificationTypeSound);
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
                                                                                  categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else
+#endif
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                                               UIRemoteNotificationTypeAlert |
+                                                                               UIRemoteNotificationTypeSound)];
     }
 }
 
@@ -79,10 +86,6 @@
     // Save deviceToken on MaxLeap servers.
     [[MLInstallation currentInstallation] setDeviceTokenFromData:deviceToken];
     [[MLInstallation currentInstallation] saveInBackgroundWithBlock:nil];
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
-    // handle remote notification registeration error
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -99,19 +102,11 @@
  ///////////////////////////////////////////////////////////
  // Uncomment this method if you are using Facebook
  ///////////////////////////////////////////////////////////
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000  // __IPHONE_9_0
+ 
  - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
      return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
  }
-#endif
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
-    id annotation = options[UIApplicationOpenURLOptionsAnnotationKey];
-    return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:sourceApplication annotation:annotation];
-}
-
+ 
  */
 
 - (void)applicationWillResignActive:(UIApplication *)application {

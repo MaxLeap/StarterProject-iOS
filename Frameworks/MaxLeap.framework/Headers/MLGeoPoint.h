@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  Currently, object classes may only have one key associated with a GeoPoint type.
  */
-@interface MLGeoPoint : NSObject
+@interface MLGeoPoint : NSObject <NSCopying, NSCoding>
 
 /** @name Creating a MLGeoPoint */
 /*!

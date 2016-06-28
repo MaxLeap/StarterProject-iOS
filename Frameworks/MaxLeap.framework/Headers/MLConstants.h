@@ -10,7 +10,7 @@
 ///--------------------------------------
 
 // MaxLeap SDK Version
-#define MaxLeap_VERSION @"2.0.7"
+#define MaxLeap_VERSION @"2.1.0"
 
 ///--------------------------------------
 /// @name MaxLeap Sites
@@ -191,7 +191,7 @@ typedef NS_ENUM(NSInteger, MLErrorCode) {
     /** @abstract 301: CAPTCHA input is invalid. */
     kMLErrorInvalidCaptcha = 301,
     
-    /** @abstract 401: Unauthorized access, no App ID, or App ID and App key verification failed. */
+    /** @abstract 401: Unauthorized access, no App ID, or App ID and App key verification failed, or has no permission. */
     kMLErrorUnauthorized = 401,
     
     /** @abstract 503: Rate limit exceeded. */

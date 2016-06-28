@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <MLHelpCenter/MLHelpCenter.h>
 
 @interface ViewController ()
 
@@ -22,9 +21,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-}
-- (IBAction)showFAQ:(id)sender {
-    [[MLHelpCenter sharedInstance] showFAQs:self];
 }
 
 - (void)didReceiveMemoryWarning {

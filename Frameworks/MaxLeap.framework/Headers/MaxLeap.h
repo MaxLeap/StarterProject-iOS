@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param applicationId The application id for your MaxLeap application.
  *  @param clientKey     The client key for your MaxLeap application.
- *  @param site          One of the enumerator constants MLSiteUS (United States), MLSiteCN (Japan) based on your desired location.
+ *  @param site          One of the enumerator constants MLSiteUS (United States), MLSiteCN (China) based on your desired location.
  */
 + (void)setApplicationId:(NSString *)applicationId clientKey:(NSString *)clientKey site:(MLSite)site;
 

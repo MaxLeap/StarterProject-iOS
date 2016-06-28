@@ -230,4 +230,23 @@ typedef void (^MLConfigValueChangedBlock)(id __nullable newValue, id __nullable 
 
 @end
 
+///--------------------------------------
+/// @name Config Change Notification
+///--------------------------------------
+
+/**
+ *  Post when some cloud config value changes.
+ *  All changes will be contained in `userInfo`. 
+ *  The structure of userInfo is `{ key : { new : newValue, old : oldValue } }`
+ */
+FOUNDATION_EXPORT NSString * const MLConfigValueDidChangeNotification;
+
+/** Keys for entries in changes dictionary. */
+/** The key for new value. */
+FOUNDATION_EXPORT NSString * const kMLConfigNewValueKey;
+
+/** The key for old value. */
+FOUNDATION_EXPORT NSString * const kMLConfigOldValueKey;
+
+
 NS_ASSUME_NONNULL_END
