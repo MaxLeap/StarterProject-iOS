@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // ****************************************************************************
-#warning Uncomment and fill in with your MaxLeap credentials:
+#error Uncomment and fill in with your MaxLeap credentials:
     // [MaxLeap setApplicationId:@"your_application_id" clientKey:@"yout_client_key" site:MLSiteUS];
     //
     // ****************************************************************************
@@ -32,9 +32,19 @@
     // ****************************************************************************
     // enable marketing to receive
     // [MLMarketingManager enable];
+    //
+    // Register Remote Notifications
     // [self registerRemoteNotifications];
-    // record performance data for push notifications
-    // [MLMarketingManager handlePushNotificationOpened:launchOptions];
+    //
+    // Record performance data for push notifications
+    //
+    // NSDictionary *aps = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    // if (aps) {
+    //     NSLog(@"app was opened by remote notification: %@", aps);
+    //     if (NO == [self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)]) {
+    //         [MLMarketingManager handlePushNotificationOpened:aps];
+    //     }
+    // }
     // ****************************************************************************
     
     // Override point for customization after application launch.
@@ -90,10 +100,15 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // handle the remote notification
+    // Record performance data for push notifications
+    [MLMarketingManager handlePushNotificationOpened:userInfo];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // handle the remote notification
+    // Record performance data for push notifications
+    [MLMarketingManager handlePushNotificationOpened:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
 }
  */
 
