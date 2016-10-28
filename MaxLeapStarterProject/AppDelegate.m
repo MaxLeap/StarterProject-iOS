@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // ****************************************************************************
-#error Uncomment and fill in with your MaxLeap credentials:
+#warning Uncomment and fill in with your MaxLeap credentials:
     // [MaxLeap setApplicationId:@"your_application_id" clientKey:@"yout_client_key" site:MLSiteUS];
     //
     // ****************************************************************************
